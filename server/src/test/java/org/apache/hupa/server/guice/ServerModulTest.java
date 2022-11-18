@@ -19,6 +19,7 @@
 package org.apache.hupa.server.guice;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map.Entry;
@@ -64,7 +65,7 @@ public class ServerModulTest {
     public void testLoadPropertiesWithEmptyFile() throws Exception {
         GuiceListener sconfig = new GuiceListener();
 
-        File tmp = File.createTempFile("foo", ".properties");
+        File tmp = Files.createTempFile("foo", ".properties").toFile();
         tmp.deleteOnExit();
 
         try {
@@ -88,7 +89,7 @@ public class ServerModulTest {
 
     @Test
     public void testLoadDemoProperties() throws Exception {
-        File tmp = File.createTempFile("foo", ".properties");
+        File tmp = Files.createTempFile("foo", ".properties").toFile();
         tmp.deleteOnExit();
         Properties p = MockConstants.mockProperties;
         Collection<String> lines = new ArrayList<String>();
